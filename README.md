@@ -1,7 +1,7 @@
 # autocomplete
 ### by Jeff Borders
 
-> typeahead used on the homepage search
+> typeahead dropdown used for search (header and homepage hero), language selection, country selection, etc.
 
 ### Application frameworks
 
