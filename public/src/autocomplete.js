@@ -4,7 +4,12 @@ import $ from 'jquery';
 const Autocomplete = require('../../lib/js/autocomplete');
 
 $(function() {
-    const autocomplete = new Autocomplete();
+  const $formElement = $('.autocomplete-form'),
+        $formInput = $('[data-component="autocomplete"]'),
+        autocomplete = new Autocomplete({
+          "form" : $formElement,
+          "input" : $formInput
+        });
 
-    autocomplete.init();
+  autocomplete.init();
 });

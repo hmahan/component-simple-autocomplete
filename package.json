@@ -12,6 +12,7 @@
     "debug": "^2.2.0",
     "express": "~4.11.1",
     "glob": "^5.0.15",
+    "jquery-ui": "^1.10.5",
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
@@ -31,7 +32,7 @@
     "gulp-declare": "^0.3.0",
     "gulp-flatten": "^0.2.0",
     "gulp-handlebars": "^4.0.0",
-    "gulp-istanbul": "^0.10.3",    
+    "gulp-istanbul": "^0.10.3",
     "gulp-jshint": "^1.11.2",
     "gulp-minify-css": "^1.2.1",
     "gulp-mocha": "^2.2.0",
@@ -39,10 +40,11 @@
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.5.2",
     "gulp-webpack": "^1.5.0",
+    "hogan.js": "^3.0.2",
     "jquery": "^2.1.4",
     "requirejs": "^2.1.20",
     "run-sequence": "^1.1.5",
-    "v2-stylesheets": "^1.0.0",    
+    "v2-stylesheets": "^1.0.0",
     "vinyl-named": "^1.1.0",
     "vinyl-paths": "^2.1.0"
   }
