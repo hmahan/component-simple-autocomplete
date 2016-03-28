@@ -1,0 +1,8 @@
+{
+	"autocompleteType" : "heroSearch",
+    "inputPlaceholder" : "What are you looking for?",
+    "inputClasses" : [
+        "",
+        ""
+    ]
+}
