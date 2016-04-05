@@ -59,6 +59,36 @@ describe('dataUtils', () => {
       dataUtils.getServiceUrl.should.be.a('function');
     });
 
+    it('should return a serviceUrl', () => {
+      const selves = [
+        {
+          type: "omnibox",
+          locale: "en",
+          includeShadyGigs: true
+        },
+        {
+          type: "heroSearch",
+          locale: "en",
+          includeShadyGigs: false
+        },
+        {
+          type: "simple",
+          locale: "en",
+          includeShadyGigs: true
+        }
+      ];
+    
+      let i = 0;
+      
+      for (; i < selves.length; i++) {
+        dataUtils.getServiceUrl(selves[i]).should.be.a('string');
+      }
+
+      dataUtils.getServiceUrl(selves[0]).should.equal('https://fiverr.com/search/omnibox?locale=en&shady_gigs=true');
+      dataUtils.getServiceUrl(selves[1]).should.equal('https://fiverr.com/search/autocomplete?locale=en');
+      dataUtils.getServiceUrl(selves[2]).should.equal('https://fiverr.com/search/autocomplete?locale=en&shady_gigs=true');
+    });
+
   });
 
   describe('getInputVal()', () => {
