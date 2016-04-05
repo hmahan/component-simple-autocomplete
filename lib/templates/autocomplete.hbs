@@ -1,7 +1,17 @@
+{{!-- 
+  "data-component-type" options: 
+    "heroSearch"
+    "omnibox"
+    "simple"
+--}}
+
 <input 
     type="text"
     class="autocomplete-component"
     data-component="autocomplete"
+    name="{{inputName}}"
     placeholder="{{inputPlaceholder}}"
     data-component-type="{{autocompleteType}}"
+    data-component-locale="{{locale}}"
+    data-component-include-shady-gigs="{{includeShadyGigs}}"
 >

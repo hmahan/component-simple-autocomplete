@@ -1,4 +1,7 @@
 {
+  "inputPlaceholder" : "What are you looking for?",
+  "inputName" : "query",
 	"autocompleteType" : "heroSearch",
-    "inputPlaceholder" : "What are you looking for?"
+  "locale" : "en",
+  "includeShadyGigs" : true
 }
