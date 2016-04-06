@@ -11,11 +11,18 @@ function Autocomplete(options) {
     _this.type = options.type;
     _this.locale = options.locale;
     _this.includeShadyGigs = options.includeShadyGigs;
+    _this.url = options.autocompleteUrl;
+    _this.urlPrefix = options.urlPrefix || "";
+    _this.gigSearchUrl = '' + _this.urlPrefix + options.gigSearchUrl;
+    _this.userSearchUrl = '' + _this.urlPrefix + options.userSearchUrl;
+    _this.searchActionParams = options.searchActionParams;
 
     utils.pluginUtils.setSearchType(_this.type);
 
+    _this.$container = _this.setContainer(_this.$form);
     _this.$input = _this.attachAutocompletePlugin(options.input);
     _this.$dropdown = _this.setDropdownContainer(options.form);
+
     _this.bindEventListeners();
   };
 
@@ -28,6 +35,10 @@ function Autocomplete(options) {
 
   this.setDropdownContainer = function ($form) {
     return $form.find('.autocomplete-suggestions');
+  };
+
+  this.setContainer = function ($form) {
+    return $form.find('.autocomplete-container');
   };
 
   this.bindEventListeners = function () {
@@ -47,7 +58,17 @@ function Autocomplete(options) {
   this.handleInputBlur = function (e) {
     if (e) e.preventDefault();
 
-    _this.$dropdown.hide();
+    var self = _this;
+
+    setTimeout(function () {
+      self.$dropdown.hide();
+    }, 100);
+  };
+
+  this.handleItemSelect = function (suggestion) {
+    var action = utils.pluginUtils.getFormAction(_this, suggestion);
+
+    _this.$form.attr('action', action).submit();
   };
 };
 

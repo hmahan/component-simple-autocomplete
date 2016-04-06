@@ -62,22 +62,27 @@ describe('dataUtils', () => {
     it('should return a serviceUrl', () => {
       const selves = [
         {
-          type: "omnibox",
+          url: "https://fiverr.com/search/omnibox",
           locale: "en",
           includeShadyGigs: true
         },
         {
-          type: "heroSearch",
+          url: "https://fiverr.com/search/omnibox",
           locale: "en",
           includeShadyGigs: false
         },
         {
-          type: "simple",
+          url: "https://fiverr.com/search/autocomplete",
           locale: "en",
           includeShadyGigs: true
+        },
+        {
+          url: "https://fiverr.com/search/autocomplete",
+          locale: "en",
+          includeShadyGigs: false
         }
       ];
-    
+
       let i = 0;
       
       for (; i < selves.length; i++) {
@@ -85,8 +90,9 @@ describe('dataUtils', () => {
       }
 
       dataUtils.getServiceUrl(selves[0]).should.equal('https://fiverr.com/search/omnibox?locale=en&shady_gigs=true');
-      dataUtils.getServiceUrl(selves[1]).should.equal('https://fiverr.com/search/autocomplete?locale=en');
+      dataUtils.getServiceUrl(selves[1]).should.equal('https://fiverr.com/search/omnibox?locale=en');
       dataUtils.getServiceUrl(selves[2]).should.equal('https://fiverr.com/search/autocomplete?locale=en&shady_gigs=true');
+      dataUtils.getServiceUrl(selves[3]).should.equal('https://fiverr.com/search/autocomplete?locale=en');
     });
 
   });

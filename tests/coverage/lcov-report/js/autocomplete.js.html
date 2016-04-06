@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">64.52% </span>
+        <span class="strong">63.64% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>20/31</span>
+        <span class='fraction'>28/44</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>2/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.86% </span>
+        <span class="strong">30% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/7</span>
+        <span class='fraction'>3/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">68.97% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>20/29</span>
+        <span class='fraction'>28/42</span>
       </div>
     </div>
   </div>
@@ -96,7 +96,28 @@
 51
 52
 53
-54</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -109,11 +130,18 @@
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,7 +157,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
@@ -162,11 +204,18 @@ function Autocomplete(options) {
     _this.type = options.type;
     _this.locale = options.locale;
     _this.includeShadyGigs = options.includeShadyGigs;
+    _this.url = options.autocompleteUrl;
+    _this.urlPrefix = options.urlPrefix || "";
+    _this.gigSearchUrl = '' + _this.urlPrefix + options.gigSearchUrl;
+    _this.userSearchUrl = '' + _this.urlPrefix + options.userSearchUrl;
+    _this.searchActionParams = options.searchActionParams;
 &nbsp;
     utils.pluginUtils.setSearchType(_this.type);
 &nbsp;
+    _this.$container = _this.setContainer(_this.$form);
     _this.$input = _this.attachAutocompletePlugin(options.input);
     _this.$dropdown = _this.setDropdownContainer(options.form);
+&nbsp;
     _this.bindEventListeners();
   };
 &nbsp;
@@ -179,6 +228,10 @@ function Autocomplete(options) {
 &nbsp;
   this.setDropdownContainer = <span class="fstat-no" title="function not covered" >function ($form) {</span>
 <span class="cstat-no" title="statement not covered" >    return $form.find('.autocomplete-suggestions');</span>
+  };
+&nbsp;
+  this.setContainer = <span class="fstat-no" title="function not covered" >function ($form) {</span>
+<span class="cstat-no" title="statement not covered" >    return $form.find('.autocomplete-container');</span>
   };
 &nbsp;
   this.bindEventListeners = function () {
@@ -198,7 +251,17 @@ function Autocomplete(options) {
   this.handleInputBlur = <span class="fstat-no" title="function not covered" >function (e) {</span>
 <span class="cstat-no" title="statement not covered" >    if (e) <span class="cstat-no" title="statement not covered" >e.preventDefault();</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    _this.$dropdown.hide();</span>
+<span class="cstat-no" title="statement not covered" >    var self = _this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >      self.$dropdown.hide();</span>
+    }, 100);
+  };
+&nbsp;
+  this.handleItemSelect = <span class="fstat-no" title="function not covered" >function (suggestion) {</span>
+<span class="cstat-no" title="statement not covered" >    var action = utils.pluginUtils.getFormAction(_this, suggestion);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    _this.$form.attr('action', action).submit();</span>
   };
 };
 &nbsp;
@@ -208,7 +271,7 @@ module.exports = Autocomplete;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 04 2016 21:38:25 GMT-0500 (CDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Apr 06 2016 11:05:51 GMT-0500 (CDT)
 </div>
 </div>
 <script src="../prettify.js"></script>

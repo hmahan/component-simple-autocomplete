@@ -11,7 +11,27 @@ function getSearchType() {
   return searchType;
 };
 
+function getFormAction(self, suggestion) {
+  var gigSearchUrl = '' + self.gigSearchUrl + self.searchActionParams,
+      userSearchUrl = self.userSearchUrl,
+      suggestionType = suggestion.data,
+      isUserQuery = suggestion.isUserQuery || false,
+      urlPrefix = self.urlPrefix || "";
+
+  var userSearchAction = void 0,
+      formAction = void 0;
+
+  userSearchAction = !isUserQuery ? urlPrefix + '/' + suggestion.value : userSearchUrl;
+  formAction = suggestionType === 'user_suggest' ? userSearchAction : gigSearchUrl;
+
+  console.info('formaction', formAction);
+
+  return formAction;
+};
+
 function handleAjaxResults(response, term) {
+
+  console.info(response, searchType);
 
   var results = [];
 
@@ -40,5 +60,6 @@ module.exports = {
   handleAjaxResults: handleAjaxResults,
   handleBeforeRender: handleBeforeRender,
   setSearchType: setSearchType,
-  getSearchType: getSearchType
+  getSearchType: getSearchType,
+  getFormAction: getFormAction
 };

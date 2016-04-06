@@ -1,6 +1,6 @@
 {
-  "name": "autocomplete",
-  "version": "0.1.0",
+  "name": "@fiverr/autocomplete",
+  "version": "0.1.1",
   "description": "typeahead used on the homepage search",
   "author": "Jeff Borders",
   "main": "./dist/js/autocomplete.js",

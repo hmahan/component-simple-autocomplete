@@ -63,8 +63,13 @@
 	    "form": $formElement,
 	    "input": $formInput,
 	    "type": formData['componentType'],
+	    "autocompleteUrl": formData['componentAutocompleteUrl'],
 	    "locale": formData['componentLocale'],
-	    "includeShadyGigs": formData['componentIncludeShadyGigs']
+	    "includeShadyGigs": formData['componentIncludeShadyGigs'],
+	    "urlPrefix": formData['componentUrlPrefix'],
+	    "gigSearchUrl": formData['componentGigSearchUrl'],
+	    "userSearchUrl": formData['componentUserSearchUrl'],
+	    "searchActionParams": formData['componentSearchActionParams']
 	  };
 
 	  var autocomplete = void 0;
@@ -9938,11 +9943,18 @@
 	    _this.type = options.type;
 	    _this.locale = options.locale;
 	    _this.includeShadyGigs = options.includeShadyGigs;
+	    _this.url = options.autocompleteUrl;
+	    _this.urlPrefix = options.urlPrefix || "";
+	    _this.gigSearchUrl = '' + _this.urlPrefix + options.gigSearchUrl;
+	    _this.userSearchUrl = '' + _this.urlPrefix + options.userSearchUrl;
+	    _this.searchActionParams = options.searchActionParams;
 
 	    utils.pluginUtils.setSearchType(_this.type);
 
+	    _this.$container = _this.setContainer(_this.$form);
 	    _this.$input = _this.attachAutocompletePlugin(options.input);
 	    _this.$dropdown = _this.setDropdownContainer(options.form);
+
 	    _this.bindEventListeners();
 	  };
 
@@ -9955,6 +9967,10 @@
 
 	  this.setDropdownContainer = function ($form) {
 	    return $form.find('.autocomplete-suggestions');
+	  };
+
+	  this.setContainer = function ($form) {
+	    return $form.find('.autocomplete-container');
 	  };
 
 	  this.bindEventListeners = function () {
@@ -9974,7 +9990,17 @@
 	  this.handleInputBlur = function (e) {
 	    if (e) e.preventDefault();
 
-	    _this.$dropdown.hide();
+	    var self = _this;
+
+	    setTimeout(function () {
+	      self.$dropdown.hide();
+	    }, 100);
+	  };
+
+	  this.handleItemSelect = function (suggestion) {
+	    var action = utils.pluginUtils.getFormAction(_this, suggestion);
+
+	    _this.$form.attr('action', action).submit();
 	  };
 	};
 
@@ -10008,7 +10034,27 @@
 	  return searchType;
 	};
 
+	function getFormAction(self, suggestion) {
+	  var gigSearchUrl = '' + self.gigSearchUrl + self.searchActionParams,
+	      userSearchUrl = self.userSearchUrl,
+	      suggestionType = suggestion.data,
+	      isUserQuery = suggestion.isUserQuery || false,
+	      urlPrefix = self.urlPrefix || "";
+
+	  var userSearchAction = void 0,
+	      formAction = void 0;
+
+	  userSearchAction = !isUserQuery ? urlPrefix + '/' + suggestion.value : userSearchUrl;
+	  formAction = suggestionType === 'user_suggest' ? userSearchAction : gigSearchUrl;
+
+	  console.info('formaction', formAction);
+
+	  return formAction;
+	};
+
 	function handleAjaxResults(response, term) {
+
+	  console.info(response, searchType);
 
 	  var results = [];
 
@@ -10037,7 +10083,8 @@
 	  handleAjaxResults: handleAjaxResults,
 	  handleBeforeRender: handleBeforeRender,
 	  setSearchType: setSearchType,
-	  getSearchType: getSearchType
+	  getSearchType: getSearchType,
+	  getFormAction: getFormAction
 	};
 
 /***/ },
@@ -10054,29 +10101,27 @@
 	  var options = {};
 
 	  options.minChars = 2;
-	  options.appendTo = self.$form;
+	  options.appendTo = self.$container;
 	  options.serviceUrl = function (self) {
 	    return getServiceUrl(self);
 	  }(self);
 	  options.deferRequestBy = 100;
+	  options.maxHeight = 600;
 	  options.dataType = 'jsonp';
 	  options.transformResult = utils.pluginUtils.handleAjaxResults;
 	  options.beforeRender = utils.pluginUtils.handleBeforeRender;
-	  options.onSelect = self.handleAutocompleteItemSelect;
+	  options.onSelect = self.handleItemSelect;
+	  options.triggerSelectOnValidInput = false;
 
 	  return options;
 	};
 
 	function getServiceUrl(self) {
 
-	  var isOmnibox = self.type === 'omnibox' ? true : false,
-	      includeShadyGigs = self.includeShadyGigs ? true : false,
-	      protocol = "https://fiverr.com",
-	      omniboxUrlPrefix = '/search/omnibox',
-	      searchUrlPrefix = '/search/autocomplete',
-	      autoCompleteUrlPrefix = isOmnibox ? omniboxUrlPrefix : searchUrlPrefix,
+	  var includeShadyGigs = self.includeShadyGigs ? true : false,
+	      urlPrefix = self.url,
 	      shadyGigsParam = includeShadyGigs ? '&shady_gigs=true' : '',
-	      serviceUrl = '' + protocol + autoCompleteUrlPrefix + '?locale=' + self.locale + shadyGigsParam;
+	      serviceUrl = urlPrefix + '?locale=' + self.locale + shadyGigsParam;
 
 	  return serviceUrl;
 	};

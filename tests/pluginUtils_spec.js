@@ -42,6 +42,45 @@ describe('pluginUtils', () => {
     });
   });
 
+  describe('getFormAction()', () => {
+    const self = {
+      gigSearchUrl: "http://fiverr.com/search/gigs",
+      searchActionParams: "?acmpl=1&utf8=%E2%9C%93&search_in=category&source=top-bar&locale=en&layout=auto",
+      userSearchUrl: "http://fiverr.com/search/users",
+      urlPrefix: "http://fiverr.com"
+    };
+
+    const gigSuggestion = {
+      value: "logo design", 
+      data: "suggest", 
+      queryTerm: "desig"
+    };
+
+    const userSuggestions = [
+      {
+        value: "kinza_designer", 
+        data: "user_suggest", 
+        queryTerm: "desig",
+        isUserQuery: true
+      },
+      {
+        value: "kinza_designer", 
+        data: "user_suggest", 
+        queryTerm: "desig"
+      }
+    ];
+
+    it('should return a gig search action url', () => {
+      pluginUtils.getFormAction(self, gigSuggestion).should.equal("http://fiverr.com/search/gigs?acmpl=1&utf8=%E2%9C%93&search_in=category&source=top-bar&locale=en&layout=auto");
+    });
+
+    it('should return a user search action url', () => {
+      pluginUtils.getFormAction(self, userSuggestions[0]).should.equal("http://fiverr.com/search/users");
+      pluginUtils.getFormAction(self, userSuggestions[1]).should.equal("http://fiverr.com/kinza_designer");
+    });
+    
+  });
+
   describe('handleAjaxResults', () => {
 
     const typeArray = ['omnibox', 'heroSearch', 'simple'],

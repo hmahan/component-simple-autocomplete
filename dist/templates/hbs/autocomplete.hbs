@@ -1,17 +1,32 @@
 {{!-- 
   "data-component-type" options: 
-    "heroSearch"
     "omnibox"
+    "heroSearch"
     "simple"
+  "data-component-autocomplete-url" options:
+    "https://fiverr.com/search/omnibox" (omnibox only)
+    "https://fiverr.com/search/autocomplete" (others)
 --}}
 
-<input 
-    type="text"
-    class="autocomplete-component"
-    data-component="autocomplete"
-    name="{{inputName}}"
-    placeholder="{{inputPlaceholder}}"
-    data-component-type="{{autocompleteType}}"
-    data-component-locale="{{locale}}"
-    data-component-include-shady-gigs="{{includeShadyGigs}}"
->
+<div class="autocomplete-{{autocompleteType}} autocomplete-container">
+  <input 
+      type="text"
+      class="autocomplete-component"
+      data-component="autocomplete"
+      max-length="{{maxLength}}"
+      name="{{inputName}}"
+      placeholder="{{inputPlaceholder}}"
+      data-component-type="{{autocompleteType}}"
+      data-component-locale="{{autocompleteUrl.locale}}"
+      data-component-include-shady-gigs="{{autocompleteUrl.includeShadyGigs}}"
+      data-component-autocomplete-url="{{autocompleteUrl.url}}"
+      data-component-url-prefix="{{searchUrl.urlPrefix}}"
+      data-component-user-search-url="{{searchUrl.userSearch}}"
+      data-component-gig-search-url="{{searchUrl.gigSearch}}"
+      data-component-search-action-params="{{searchUrl.searchActionParams}}"
+  >
+
+  {{#submitButton}}
+    <input type="submit" value="{{value}}" />
+  {{/submitButton}}  
+</div>

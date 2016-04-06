@@ -44,6 +44,7 @@ describe('Autocomplete()', () => {
       autocomplete.handleAutocompleteItemSelect = () => { return true; };
       autocomplete.handleInputFocus = () => { return true; };
       autocomplete.handleInputBlur = () => { return true; };
+      autocomplete.setContainer = () => { return true; };
 
       it('should exist', () => {
         autocomplete.init.should.exist;
@@ -74,12 +75,15 @@ describe('Autocomplete()', () => {
         autocomplete.$dropdown.should.exist;
       });
 
+      it('should set a $container property', () => {
+        autocomplete.$container.should.exist;
+      });
+
     });
 
     describe('bindEventListeners()', () => {
 
       let events = {};
-
       autocomplete = new Autocomplete(defaultOptions);
 
       // enable testing by disabling normal functions
@@ -88,20 +92,22 @@ describe('Autocomplete()', () => {
       autocomplete.handleAutocompleteItemSelect = () => { return true; };
       autocomplete.handleInputFocus = () => { return true; };
       autocomplete.handleInputBlur = () => { return true; };
+      autocomplete.setContainer = () => { return true; };
 
       // set up fake on function
-      autocomplete.attachAutocompletePlugin = () => { 
-        return {
-          on: (event, callback) => {
-            events[event] = callback;
+      autocomplete.attachAutocompletePlugin = () => {
 
-            return {
-              on: (event, callback) => {
-                events[event] = callback;
-              }
+        function recursiveOn() {
+          return {
+            on: (event, callback) => {
+              events[event] = callback;
+
+              return recursiveOn();
             }
-          }
-        }
+          };
+        };
+
+        return recursiveOn();
       };
 
       // init the function so events are bound
