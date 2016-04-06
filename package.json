@@ -1,6 +1,6 @@
 {
   "name": "@fiverr/autocomplete",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "typeahead used on the homepage search",
   "author": "Jeff Borders",
   "main": "./dist/js/autocomplete.js",
@@ -48,7 +48,7 @@
     "mocha-jsdom": "^1.1.0",
     "requirejs": "^2.1.20",
     "run-sequence": "^1.1.5",
-    "v2-stylesheets": "^1.0.0",
+    "@fiverr/v2-stylesheets": "^1.0.0",
     "vinyl-named": "^1.1.0",
     "vinyl-paths": "^2.1.0"
   }
