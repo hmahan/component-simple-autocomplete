@@ -8,25 +8,27 @@
     "https://fiverr.com/search/autocomplete" (others)
 --}}
 
-<div class="autocomplete-{{autocompleteType}} autocomplete-container">
-  <input 
-      type="text"
-      class="autocomplete-component"
-      data-component="autocomplete"
-      max-length="{{maxLength}}"
-      name="{{inputName}}"
-      placeholder="{{inputPlaceholder}}"
-      data-component-type="{{autocompleteType}}"
-      data-component-locale="{{autocompleteUrl.locale}}"
-      data-component-include-shady-gigs="{{autocompleteUrl.includeShadyGigs}}"
-      data-component-autocomplete-url="{{autocompleteUrl.url}}"
-      data-component-url-prefix="{{searchUrl.urlPrefix}}"
-      data-component-user-search-url="{{searchUrl.userSearch}}"
-      data-component-gig-search-url="{{searchUrl.gigSearch}}"
-      data-component-search-action-params="{{searchUrl.searchActionParams}}"
-  >
+<form class="autocomplete-form autocomplete-{{autocompleteType}}">
+  <div class="autocomplete-container">
+    <input 
+        type="text"
+        class="autocomplete-component"
+        data-component="autocomplete"
+        max-length="{{maxLength}}"
+        name="{{inputName}}"
+        placeholder="{{inputPlaceholder}}"
+        data-component-type="{{autocompleteType}}"
+        data-component-locale="{{autocompleteUrl.locale}}"
+        data-component-include-shady-gigs="{{autocompleteUrl.includeShadyGigs}}"
+        data-component-autocomplete-url="{{autocompleteUrl.url}}"
+        data-component-url-prefix="{{searchUrl.urlPrefix}}"
+        data-component-user-search-url="{{searchUrl.userSearch}}"
+        data-component-gig-search-url="{{searchUrl.gigSearch}}"
+        data-component-search-action-params="{{searchUrl.searchActionParams}}"
+    >
 
-  {{#submitButton}}
-    <input type="submit" value="{{value}}" />
-  {{/submitButton}}  
-</div>
+    {{#submitButton}}
+      <input type="submit" value="{{value}}" />
+    {{/submitButton}}  
+  </div>
+</form>

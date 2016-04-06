@@ -18,20 +18,20 @@ gulp
             .pipe(gulp.dest('dist/js'));
     })
     .task('es6:runner', () => {
-        return gulp.src(`public/src/${pkg.name}.js`)
+        return gulp.src(`public/src/${pkg.moduleName}.js`)
             .pipe(babel({
                 presets: ['es2015'],
                 sourceMaps: true
             }))
             .pipe(jsHint())
-            .pipe(rename(`${pkg.name}.tmp.js`))
+            .pipe(rename(`${pkg.moduleName}.tmp.js`))
             .pipe(gulp.dest('public/src'));
     })
     .task('js:runner', () => {
-        return gulp.src(`public/src/${pkg.name}.tmp.js`)
+        return gulp.src(`public/src/${pkg.moduleName}.tmp.js`)
             .pipe(webpack({
                 output : {
-                    filename : `${pkg.name}.js`
+                    filename : `${pkg.moduleName}.js`
                 }
             }))
             .pipe(gulp.dest('./public/build'));

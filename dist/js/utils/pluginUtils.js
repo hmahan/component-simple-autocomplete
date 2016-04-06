@@ -24,14 +24,10 @@ function getFormAction(self, suggestion) {
   userSearchAction = !isUserQuery ? urlPrefix + '/' + suggestion.value : userSearchUrl;
   formAction = suggestionType === 'user_suggest' ? userSearchAction : gigSearchUrl;
 
-  console.info('formaction', formAction);
-
   return formAction;
 };
 
 function handleAjaxResults(response, term) {
-
-  console.info(response, searchType);
 
   var results = [];
 

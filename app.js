@@ -13,7 +13,7 @@ var pkg = require('./package.json');
 
 var model = {
 	'pkg': pkg,	
-	'home': require('./models/' + pkg.name),
+	'home': require('./models/' + pkg.moduleName),
 	'404': require('./models/404')
 };
 

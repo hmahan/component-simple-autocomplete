@@ -2,16 +2,14 @@
 <html lang="en-US">
 	<head>
 		<meta charset="utf-8" />
-		<title>{{pkg.name}}</title>
+		<title>{{pkg.moduleName}}</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" href="/public/build/includes.css" />
 
-		<link rel="stylesheet" href="/dist/styles/css/{{pkg.name}}.css" />
-		<script src="/public/build/{{pkg.name}}.js"></script>
+		<link rel="stylesheet" href="/dist/styles/css/{{pkg.moduleName}}.css" />
+		<script src="/public/build/{{pkg.moduleName}}.js"></script>
 	</head>
 	<body>
-		<form class="autocomplete-form">
 			{{> autocomplete}}
-		</form>
 	</body>
 </html>

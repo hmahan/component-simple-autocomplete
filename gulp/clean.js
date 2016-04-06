@@ -11,7 +11,7 @@ gulp
     })
     .task('clean:runner', () => {
         return del([
-            `public/src/${pkg.name}.tmp.js`
+            `public/src/${pkg.moduleName}.tmp.js`
         ]);
     })
     .task('clean:css', () => {
