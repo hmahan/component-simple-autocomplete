@@ -31,6 +31,7 @@
             background-color: #fff;
             margin-top: 5px;
             border: 1px solid $bg_header_grey_lightest;
+            text-align: left;
 
             @include border-radius(3px);
             @include box-shadow(0px 3px 13px 0px rgba(60,60,60,0.4));
@@ -104,6 +105,7 @@
             border: 1px solid #cccccc;
             border-radius: 0 0 5px 5px;
             margin-top: -1px;
+            text-align: left;
 
             .autocomplete-suggestion {
                 padding: 7px 10px 8px 10px;
