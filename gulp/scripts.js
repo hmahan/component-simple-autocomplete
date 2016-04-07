@@ -31,7 +31,9 @@ gulp
         return gulp.src(`public/src/${pkg.moduleName}.tmp.js`)
             .pipe(webpack({
                 output : {
-                    filename : `${pkg.moduleName}.js`
+                    filename : `${pkg.moduleName}.js`,
+                    library: `${pkg.moduleName}`,
+                    libraryTarget: 'commonjs2'
                 }
             }))
             .pipe(gulp.dest('./public/build'));
