@@ -1,17 +1,40 @@
 {
-  "inputPlaceholder" : "Find Services",
-  "inputName" : "query",
-  "autocompleteType" : "omnibox",
-  "maxLength" : 40,
-  "autocompleteUrl" : {
-    "url" : "http://fiverr.com/search/omnibox",
-    "locale" : "en",
-    "includeShadyGigs" : true
-  },
-  "searchUrl": {
-    "urlPrefix" : "https://fiverr.com",
-    "userSearch" : "/search/users",
-    "gigSearch" : "/search/gigs",
-    "searchActionParams" : "?acmpl=1&utf8=✓&search_in=category&source=top-bar&locale=en"
-  }
+    "inputPlaceholder" : "Find Services",
+    "inputName" : "query",
+    "autocompleteType" : "omnibox",
+    "maxLength" : 40,
+    "userSubhead" : "users",
+    "autocompleteUrl" : {
+        "url" : "http://fiverr.com/search/omnibox",
+        "locale" : "en",
+        "includeShadyGigs" : true
+    },
+    "searchUrl": {
+        "urlPrefix" : "https://fiverr.com",
+        "userSearch" : "/search/users",
+        "gigSearch" : "/search/gigs"
+    },
+    "hiddenFields" : [
+        {
+            "name" : "acmpl",
+            "value" : 1
+        },
+        {
+            "name" : "utf8",
+            "value" : "✓"
+        },
+        {
+            "name" : "search_in",
+            "value" : "everywhere"
+        },
+        {
+            "name" : "source",
+            "value" : "top-bar"
+        },
+        {
+            "name" : "locale",
+            "value" : "en"
+        }
+    ],
+    "searchContainingTranslationPrefix" : "Search usernames containing"
 }

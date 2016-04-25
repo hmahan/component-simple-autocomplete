@@ -63,13 +63,15 @@
 	    "form": $formElement,
 	    "input": $formInput,
 	    "type": formData['componentType'],
+	    "userSubhead": formData['componentUserSubhead'],
 	    "autocompleteUrl": formData['componentAutocompleteUrl'],
 	    "locale": formData['componentLocale'],
 	    "includeShadyGigs": formData['componentIncludeShadyGigs'],
 	    "urlPrefix": formData['componentUrlPrefix'],
 	    "gigSearchUrl": formData['componentGigSearchUrl'],
 	    "userSearchUrl": formData['componentUserSearchUrl'],
-	    "searchActionParams": formData['componentSearchActionParams']
+	    "searchActionParams": formData['componentSearchActionParams'],
+	    "alternativeSearchPrefix": formData['componentAlternativeSearchPrefix']
 	  };
 
 	  var autocomplete = void 0;
@@ -9942,6 +9944,7 @@
 	    _this.$form = options.form;
 	    _this.type = options.type;
 	    _this.locale = options.locale;
+	    _this.userSubhead = options.userSubhead;
 	    _this.includeShadyGigs = options.includeShadyGigs;
 	    _this.url = options.autocompleteUrl;
 	    _this.urlPrefix = options.urlPrefix || "";
@@ -9950,6 +9953,7 @@
 	    _this.searchActionParams = options.searchActionParams;
 
 	    utils.pluginUtils.setSearchType(_this.type);
+	    utils.pluginUtils.setAlternativeSearchPrefix(options.alternativeSearchPrefix);
 
 	    _this.$container = _this.setContainer(_this.$form);
 	    _this.$input = _this.attachAutocompletePlugin(options.input);
@@ -9990,10 +9994,8 @@
 	  this.handleInputBlur = function (e) {
 	    if (e) e.preventDefault();
 
-	    var self = _this;
-
 	    setTimeout(function () {
-	      self.$dropdown.hide();
+	      _this.$dropdown.hide();
 	    }, 100);
 	  };
 
@@ -10025,18 +10027,29 @@
 
 	var $ = __webpack_require__(1);
 	var searchType = void 0,
-	    searchResults = void 0;
+	    searchResults = void 0,
+	    alternativeSearchPrefix = void 0;
 
 	function setSearchType(type) {
 	  searchType = type;
+	  return searchType;
 	};
 
 	function getSearchType() {
 	  return searchType;
 	};
 
+	function setAlternativeSearchPrefix(phrase) {
+	  alternativeSearchPrefix = phrase;
+	  return alternativeSearchPrefix;
+	};
+
+	function getAlternativeSearchPrefix() {
+	  return alternativeSearchPrefix;
+	};
+
 	function getFormAction(self, suggestion) {
-	  var gigSearchUrl = '' + self.gigSearchUrl + self.searchActionParams,
+	  var gigSearchUrl = '' + self.gigSearchUrl,
 	      userSearchUrl = self.userSearchUrl,
 	      suggestionType = suggestion.data,
 	      isUserQuery = suggestion.isUserQuery || false,
@@ -10074,8 +10087,16 @@
 	function handleBeforeRender($container) {
 
 	  if (getSearchType() !== 'omnibox') {
-	    return;
+	    return $container;
 	  }
+
+	  addSuggestionClasses($container);
+	  addAlternativeSearch($container, this);
+
+	  return $container;
+	};
+
+	function addSuggestionClasses($container) {
 
 	  var $suggestions = $container.find('.autocomplete-suggestion');
 
@@ -10087,13 +10108,44 @@
 	  $suggestions.each(function () {
 	    $suggestion = $(this);
 	    suggestionDataIndex = $suggestion.data('index');
-	    suggestionData = searchResults[suggestionDataIndex];
-	    suggestionType = suggestionData.data;
+	    suggestionData = searchResults[suggestionDataIndex] || {};
+	    suggestionType = suggestionData.data || 'suggest';
+
+	    if (suggestionType === 'user_suggest') {
+	      $suggestion.prepend($('<i />', { 'class': 'fa fa-user' }));
+	    }
 
 	    $suggestion.addClass(suggestionType);
 	  });
+	};
 
-	  return $container;
+	function addAlternativeSearch($container, self) {
+	  var query = searchResults[0].queryTerm,
+	      prefix = getAlternativeSearchPrefix(),
+	      $userSubhead = $('<div />', {
+	    'class': 'autocomplete-title',
+	    'text': self.userSubhead
+	  }),
+	      $userSection = $('<div />', {
+	    'class': 'autocomplete-suggestion autocomplete-alternative-search'
+	  }),
+	      $icon = $('<i />', {
+	    'class': 'fa fa-search'
+	  }),
+	      isOmnibox = getSearchType() === 'omnibox',
+	      omniboxString = prefix + ' <strong>' + query + '</strong>',
+	      normalSearchString = prefix + ' \'' + query + '\'',
+	      userSectionString = isOmnibox ? omniboxString : normalSearchString;
+
+	  console.info('userSubhead', $userSubhead, self.userSubhead);
+
+	  $userSection.html(userSectionString).prepend($icon).on('click', function (e) {
+	    e.preventDefault();
+
+	    self.$form.attr('action', self.userSearchUrl).submit();
+	  });
+
+	  $container.find('.user_suggest').eq(0).before($userSubhead).before($userSection);
 	};
 
 	module.exports = {
@@ -10101,7 +10153,8 @@
 	  handleBeforeRender: handleBeforeRender,
 	  setSearchType: setSearchType,
 	  getSearchType: getSearchType,
-	  getFormAction: getFormAction
+	  getFormAction: getFormAction,
+	  setAlternativeSearchPrefix: setAlternativeSearchPrefix
 	};
 
 /***/ },
@@ -10126,7 +10179,10 @@
 	  options.maxHeight = 600;
 	  options.dataType = 'jsonp';
 	  options.transformResult = utils.pluginUtils.handleAjaxResults;
-	  options.beforeRender = utils.pluginUtils.handleBeforeRender;
+	  options.beforeRender = function (container) {
+	    return utils.pluginUtils.handleBeforeRender.call(self, container);
+	  };
+
 	  options.onSelect = self.handleItemSelect;
 	  options.triggerSelectOnValidInput = false;
 

@@ -1,5 +1,5 @@
-{{!-- 
-  "data-component-type" options: 
+{{!--
+  "data-component-type" options:
     "omnibox"
     "heroSearch"
     "simple"
@@ -10,7 +10,7 @@
 
 <form class="autocomplete-form autocomplete-{{autocompleteType}}">
   <div class="autocomplete-container">
-    <input 
+    <input
         type="text"
         class="autocomplete-component"
         data-component="autocomplete"
@@ -25,10 +25,16 @@
         data-component-user-search-url="{{searchUrl.userSearch}}"
         data-component-gig-search-url="{{searchUrl.gigSearch}}"
         data-component-search-action-params="{{searchUrl.searchActionParams}}"
+        data-component-alternative-search-prefix="{{searchContainingTranslationPrefix}}"
+        data-component-user-subhead="{{userSubhead}}"
     >
+
+    {{#hiddenFields}}
+        <input type="hidden" id="{{name}}" name="{{name}}" value="{{value}}" />
+    {{/hiddenFields}}
 
     {{#submitButton}}
       <input type="submit" value="{{value}}" />
-    {{/submitButton}}  
+    {{/submitButton}}
   </div>
 </form>

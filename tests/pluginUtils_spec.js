@@ -8,7 +8,7 @@ const pluginUtils = require('../dist/js/utils/pluginUtils');
 const defaultOptions = { type: "omnibox", locale: "en", includeShadyGigs: true };
 
 describe('pluginUtils', () => {
-  
+
   describe('setSearchType()', () => {
 
     it('should be a function', () => {
@@ -26,7 +26,7 @@ describe('pluginUtils', () => {
   });
 
   describe('getSearchType()', () => {
-    
+
     pluginUtils.setSearchType('heroSearch');
 
     it('should be a function', () => {
@@ -51,21 +51,21 @@ describe('pluginUtils', () => {
     };
 
     const gigSuggestion = {
-      value: "logo design", 
-      data: "suggest", 
+      value: "logo design",
+      data: "suggest",
       queryTerm: "desig"
     };
 
     const userSuggestions = [
       {
-        value: "kinza_designer", 
-        data: "user_suggest", 
+        value: "kinza_designer",
+        data: "user_suggest",
         queryTerm: "desig",
         isUserQuery: true
       },
       {
-        value: "kinza_designer", 
-        data: "user_suggest", 
+        value: "kinza_designer",
+        data: "user_suggest",
         queryTerm: "desig"
       }
     ];
@@ -78,7 +78,7 @@ describe('pluginUtils', () => {
       pluginUtils.getFormAction(self, userSuggestions[0]).should.equal("http://fiverr.com/search/users");
       pluginUtils.getFormAction(self, userSuggestions[1]).should.equal("http://fiverr.com/kinza_designer");
     });
-    
+
   });
 
   describe('handleAjaxResults', () => {
@@ -164,7 +164,7 @@ describe('pluginUtils', () => {
     });
 
     it('should return what is passed in', () => {
-      pluginUtils.handleBeforeRender('string').should.be.a('string');
+      pluginUtils.handleBeforeRender('this is a string').should.be.a('string');
       pluginUtils.handleBeforeRender(24).should.be.a('number');
       pluginUtils.handleBeforeRender(function() {}).should.be.a('function');
       pluginUtils.handleBeforeRender({}).should.be.an('object');

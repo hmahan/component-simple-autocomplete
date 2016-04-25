@@ -2,7 +2,7 @@
 
 .autocomplete-form {
     &.autocomplete-omnibox {
-        
+
         input[type=text] {
             height: 32px;
             width: 220px;
@@ -36,9 +36,16 @@
             @include border-radius(3px);
             @include box-shadow(0px 3px 13px 0px rgba(60,60,60,0.4));
 
+            .autocomplete-title {
+                color: $text_base_medium;
+                margin: 15px 0 5px 10px;
+                text-transform: uppercase;
+                font-size: 11px;
+            }
+
             .autocomplete-suggestion {
                 padding: 10px 10px 8px 10px;
-                
+
                 font-size: 16px;
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 color: $text_base_medium;
@@ -48,8 +55,21 @@
                 white-space: nowrap;
                 text-overflow: ellipsis;
 
+                i {
+                    color: $text_base_dark;
+                    margin-right: 10px;
+                }
+
                 strong {
                     color: $text_base_dark;
+                }
+
+                &.autocomplete-selected {
+                    background: inherit;
+                }
+
+                &:hover {
+                    background: $bg_header_grey_lightest;
                 }
             }
         }
@@ -78,7 +98,7 @@
 
             &:focus {
                 @include opacity(1);
-                @include box-shadow(0px 0px 0px rgba(0,0,0,0));      
+                @include box-shadow(0px 0px 0px rgba(0,0,0,0));
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
             }

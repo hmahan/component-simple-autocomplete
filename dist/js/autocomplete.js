@@ -10,6 +10,7 @@ function Autocomplete(options) {
     _this.$form = options.form;
     _this.type = options.type;
     _this.locale = options.locale;
+    _this.userSubhead = options.userSubhead;
     _this.includeShadyGigs = options.includeShadyGigs;
     _this.url = options.autocompleteUrl;
     _this.urlPrefix = options.urlPrefix || "";
@@ -18,6 +19,7 @@ function Autocomplete(options) {
     _this.searchActionParams = options.searchActionParams;
 
     utils.pluginUtils.setSearchType(_this.type);
+    utils.pluginUtils.setAlternativeSearchPrefix(options.alternativeSearchPrefix);
 
     _this.$container = _this.setContainer(_this.$form);
     _this.$input = _this.attachAutocompletePlugin(options.input);
@@ -58,10 +60,8 @@ function Autocomplete(options) {
   this.handleInputBlur = function (e) {
     if (e) e.preventDefault();
 
-    var self = _this;
-
     setTimeout(function () {
-      self.$dropdown.hide();
+      _this.$dropdown.hide();
     }, 100);
   };
 

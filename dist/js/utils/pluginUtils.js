@@ -2,18 +2,29 @@
 
 var $ = require('jquery');
 var searchType = void 0,
-    searchResults = void 0;
+    searchResults = void 0,
+    alternativeSearchPrefix = void 0;
 
 function setSearchType(type) {
   searchType = type;
+  return searchType;
 };
 
 function getSearchType() {
   return searchType;
 };
 
+function setAlternativeSearchPrefix(phrase) {
+  alternativeSearchPrefix = phrase;
+  return alternativeSearchPrefix;
+};
+
+function getAlternativeSearchPrefix() {
+  return alternativeSearchPrefix;
+};
+
 function getFormAction(self, suggestion) {
-  var gigSearchUrl = '' + self.gigSearchUrl + self.searchActionParams,
+  var gigSearchUrl = '' + self.gigSearchUrl,
       userSearchUrl = self.userSearchUrl,
       suggestionType = suggestion.data,
       isUserQuery = suggestion.isUserQuery || false,
@@ -51,8 +62,16 @@ function handleAjaxResults(response, term) {
 function handleBeforeRender($container) {
 
   if (getSearchType() !== 'omnibox') {
-    return;
+    return $container;
   }
+
+  addSuggestionClasses($container);
+  addAlternativeSearch($container, this);
+
+  return $container;
+};
+
+function addSuggestionClasses($container) {
 
   var $suggestions = $container.find('.autocomplete-suggestion');
 
@@ -64,13 +83,44 @@ function handleBeforeRender($container) {
   $suggestions.each(function () {
     $suggestion = $(this);
     suggestionDataIndex = $suggestion.data('index');
-    suggestionData = searchResults[suggestionDataIndex];
-    suggestionType = suggestionData.data;
+    suggestionData = searchResults[suggestionDataIndex] || {};
+    suggestionType = suggestionData.data || 'suggest';
+
+    if (suggestionType === 'user_suggest') {
+      $suggestion.prepend($('<i />', { 'class': 'fa fa-user' }));
+    }
 
     $suggestion.addClass(suggestionType);
   });
+};
 
-  return $container;
+function addAlternativeSearch($container, self) {
+  var query = searchResults[0].queryTerm,
+      prefix = getAlternativeSearchPrefix(),
+      $userSubhead = $('<div />', {
+    'class': 'autocomplete-title',
+    'text': self.userSubhead
+  }),
+      $userSection = $('<div />', {
+    'class': 'autocomplete-suggestion autocomplete-alternative-search'
+  }),
+      $icon = $('<i />', {
+    'class': 'fa fa-search'
+  }),
+      isOmnibox = getSearchType() === 'omnibox',
+      omniboxString = prefix + ' <strong>' + query + '</strong>',
+      normalSearchString = prefix + ' \'' + query + '\'',
+      userSectionString = isOmnibox ? omniboxString : normalSearchString;
+
+  console.info('userSubhead', $userSubhead, self.userSubhead);
+
+  $userSection.html(userSectionString).prepend($icon).on('click', function (e) {
+    e.preventDefault();
+
+    self.$form.attr('action', self.userSearchUrl).submit();
+  });
+
+  $container.find('.user_suggest').eq(0).before($userSubhead).before($userSection);
 };
 
 module.exports = {
@@ -78,5 +128,6 @@ module.exports = {
   handleBeforeRender: handleBeforeRender,
   setSearchType: setSearchType,
   getSearchType: getSearchType,
-  getFormAction: getFormAction
+  getFormAction: getFormAction,
+  setAlternativeSearchPrefix: setAlternativeSearchPrefix
 };
