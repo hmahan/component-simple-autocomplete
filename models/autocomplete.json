@@ -1,10 +1,10 @@
 {
-  "inputPlaceholder" : "What are you looking for?",
+  "inputPlaceholder" : "Find Services",
   "inputName" : "query",
-	"autocompleteType" : "heroSearch",
+  "autocompleteType" : "omnibox",
   "maxLength" : 40,
   "autocompleteUrl" : {
-    "url" : "http://fiverr.com/search/autocomplete",
+    "url" : "http://fiverr.com/search/omnibox",
     "locale" : "en",
     "includeShadyGigs" : true
   },
@@ -13,8 +13,5 @@
     "userSearch" : "/search/users",
     "gigSearch" : "/search/gigs",
     "searchActionParams" : "?acmpl=1&utf8=✓&search_in=category&source=top-bar&locale=en"
-  },
-  "submitButton": {
-    "value" : "Find Services"
   }
 }

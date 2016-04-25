@@ -22,8 +22,8 @@ gulp
 	})
 	.task('runner', () => {
 		runSequence(
-			'es6:runner', 
-			'js:runner', 
+			'es6:runner',
+			'js:runner',
 			'clean:runner'
 		);
 	})

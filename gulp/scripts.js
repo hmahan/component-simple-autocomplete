@@ -32,8 +32,8 @@ gulp
             .pipe(webpack({
                 output : {
                     filename : `${pkg.moduleName}.js`,
-                    library: `${pkg.moduleName}`,
-                    libraryTarget: 'commonjs2'
+                    // library: `${pkg.moduleName}`,
+                    // libraryTarget: 'commonjs2'
                 }
             }))
             .pipe(gulp.dest('./public/build'));

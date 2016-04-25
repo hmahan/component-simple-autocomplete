@@ -1,7 +1,8 @@
 'use strict';
 
 var $ = require('jquery');
-var searchType = void 0;
+var searchType = void 0,
+    searchResults = void 0;
 
 function setSearchType(type) {
   searchType = type;
@@ -29,7 +30,7 @@ function getFormAction(self, suggestion) {
 
 function handleAjaxResults(response, term) {
 
-  var results = [];
+  searchResults = [];
 
   if (searchType !== 'omnibox') {
     return response;
@@ -41,13 +42,33 @@ function handleAjaxResults(response, term) {
       return obj.queryTerm = term;
     });
 
-    results = results.concat(response[key]);
+    searchResults = searchResults.concat(response[key]);
   }
 
-  return { suggestions: results };
+  return { suggestions: searchResults };
 };
 
 function handleBeforeRender($container) {
+
+  if (getSearchType() !== 'omnibox') {
+    return;
+  }
+
+  var $suggestions = $container.find('.autocomplete-suggestion');
+
+  var suggestionType = void 0,
+      suggestionData = void 0,
+      suggestionDataIndex = void 0,
+      $suggestion = void 0;
+
+  $suggestions.each(function () {
+    $suggestion = $(this);
+    suggestionDataIndex = $suggestion.data('index');
+    suggestionData = searchResults[suggestionDataIndex];
+    suggestionType = suggestionData.data;
+
+    $suggestion.addClass(suggestionType);
+  });
 
   return $container;
 };

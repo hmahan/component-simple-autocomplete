@@ -17,7 +17,7 @@ var model = {
 	'404': require('./models/404')
 };
 
-function getModel(modelName) {    
+function getModel(modelName) {
 	var formattedModel;
 
 	if (!model[modelName]) {
