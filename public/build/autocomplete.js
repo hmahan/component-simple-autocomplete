@@ -10153,13 +10153,25 @@
 	  $container.find('.user_search').before($userSubhead);
 	};
 
+	function onSearchStart() {
+	  this.$input.autocomplete().clearCache();
+
+	  this.$submit.addClass('fa-circle-o-notch fa-spin').removeClass('fa-search');
+	};
+
+	function onSearchComplete() {
+	  this.$submit.addClass('fa-search').removeClass('fa-circle-o-notch fa-spin');
+	};
+
 	module.exports = {
 	  handleAjaxResults: handleAjaxResults,
 	  handleBeforeRender: handleBeforeRender,
 	  setSearchType: setSearchType,
 	  getSearchType: getSearchType,
 	  getFormAction: getFormAction,
-	  setAlternativeSearchPrefix: setAlternativeSearchPrefix
+	  setAlternativeSearchPrefix: setAlternativeSearchPrefix,
+	  onSearchStart: onSearchStart,
+	  onSearchComplete: onSearchComplete
 	};
 
 /***/ },
@@ -10190,11 +10202,10 @@
 	    return utils.pluginUtils.handleBeforeRender.call(self, container);
 	  };
 	  options.onSearchStart = function () {
-	    self.$input.autocomplete().clearCache();
-	    self.$submit.addClass('fa-circle-o-notch fa-spin').removeClass('fa-search');
+	    return utils.pluginUtils.onSearchStart.call(self);
 	  };
 	  options.onSearchComplete = function () {
-	    self.$submit.addClass('fa-search').removeClass('fa-circle-o-notch fa-spin');
+	    return util.pluginUtils.onSearchComplete.call(self);
 	  };
 	  options.onSelect = self.handleItemSelect;
 	  options.triggerSelectOnValidInput = false;

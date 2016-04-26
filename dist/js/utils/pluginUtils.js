@@ -117,11 +117,23 @@ function addAlternativeSearchHeader($container, self) {
   $container.find('.user_search').before($userSubhead);
 };
 
+function onSearchStart() {
+  this.$input.autocomplete().clearCache();
+
+  this.$submit.addClass('fa-circle-o-notch fa-spin').removeClass('fa-search');
+};
+
+function onSearchComplete() {
+  this.$submit.addClass('fa-search').removeClass('fa-circle-o-notch fa-spin');
+};
+
 module.exports = {
   handleAjaxResults: handleAjaxResults,
   handleBeforeRender: handleBeforeRender,
   setSearchType: setSearchType,
   getSearchType: getSearchType,
   getFormAction: getFormAction,
-  setAlternativeSearchPrefix: setAlternativeSearchPrefix
+  setAlternativeSearchPrefix: setAlternativeSearchPrefix,
+  onSearchStart: onSearchStart,
+  onSearchComplete: onSearchComplete
 };
