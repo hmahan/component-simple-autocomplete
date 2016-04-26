@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">64.44% </span>
+        <span class="strong">62.26% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>29/45</span>
+        <span class='fraction'>33/53</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>2/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">25% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>2/8</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">30% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/10</span>
+        <span class='fraction'>3/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">67.44% </span>
+        <span class="strong">64.71% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>29/43</span>
+        <span class='fraction'>33/51</span>
       </div>
     </div>
   </div>
@@ -118,7 +118,21 @@
 73
 74
 75
-76</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -136,10 +150,12 @@
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-yes">2×</span>
@@ -163,14 +179,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,6 +203,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -205,6 +233,7 @@ function Autocomplete(options) {
     _this.$form = options.form;
     _this.type = options.type;
     _this.locale = options.locale;
+    _this.userSubhead = options.userSubhead;
     _this.includeShadyGigs = options.includeShadyGigs;
     _this.url = options.autocompleteUrl;
     _this.urlPrefix = options.urlPrefix || "";
@@ -217,6 +246,7 @@ function Autocomplete(options) {
 &nbsp;
     _this.$container = _this.setContainer(_this.$form);
     _this.$input = _this.attachAutocompletePlugin(options.input);
+    _this.$submit = _this.setSubmitButton(options.form);
     _this.$dropdown = _this.setDropdownContainer(options.form);
 &nbsp;
     _this.bindEventListeners();
@@ -233,12 +263,21 @@ function Autocomplete(options) {
 <span class="cstat-no" title="statement not covered" >    return $form.find('.autocomplete-suggestions');</span>
   };
 &nbsp;
+  this.setSubmitButton = <span class="fstat-no" title="function not covered" >function ($form) {</span>
+<span class="cstat-no" title="statement not covered" >    return $form.find('.js-submit');</span>
+  };
+&nbsp;
   this.setContainer = <span class="fstat-no" title="function not covered" >function ($form) {</span>
 <span class="cstat-no" title="statement not covered" >    return $form.find('.autocomplete-container');</span>
   };
 &nbsp;
   this.bindEventListeners = function () {
     _this.$input.on('focus', _this.handleInputFocus).on('blur', _this.handleInputBlur);
+&nbsp;
+    _this.$submit.on('click', <span class="fstat-no" title="function not covered" >function (e) {</span>
+<span class="cstat-no" title="statement not covered" >      e.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >      _this.$form.submit();</span>
+    });
   };
 &nbsp;
   this.handleInputFocus = <span class="fstat-no" title="function not covered" >function (e) {</span>
@@ -254,15 +293,18 @@ function Autocomplete(options) {
   this.handleInputBlur = <span class="fstat-no" title="function not covered" >function (e) {</span>
 <span class="cstat-no" title="statement not covered" >    if (e) <span class="cstat-no" title="statement not covered" >e.preventDefault();</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var self = _this;</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >    setTimeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >      self.$dropdown.hide();</span>
+<span class="cstat-no" title="statement not covered" >      _this.$dropdown.hide();</span>
     }, 100);
   };
 &nbsp;
   this.handleItemSelect = <span class="fstat-no" title="function not covered" >function (suggestion) {</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    var action = utils.pluginUtils.getFormAction(_this, suggestion);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (suggestion.isUserQuery) {</span>
+<span class="cstat-no" title="statement not covered" >      _this.$input.val(suggestion.queryTerm);</span>
+    }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    _this.$form.attr('action', action).submit();</span>
   };
@@ -274,7 +316,7 @@ module.exports = Autocomplete;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 25 2016 15:04:39 GMT-0500 (CDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Apr 26 2016 16:21:43 GMT-0500 (CDT)
 </div>
 </div>
 <script src="../prettify.js"></script>

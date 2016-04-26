@@ -9957,7 +9957,7 @@
 
 	    _this.$container = _this.setContainer(_this.$form);
 	    _this.$input = _this.attachAutocompletePlugin(options.input);
-	    _this.$submit = _this.$container.find('.js-submit');
+	    _this.$submit = _this.setSubmitButton(options.form);
 	    _this.$dropdown = _this.setDropdownContainer(options.form);
 
 	    _this.bindEventListeners();
@@ -9972,6 +9972,10 @@
 
 	  this.setDropdownContainer = function ($form) {
 	    return $form.find('.autocomplete-suggestions');
+	  };
+
+	  this.setSubmitButton = function ($form) {
+	    return $form.find('.js-submit');
 	  };
 
 	  this.setContainer = function ($form) {

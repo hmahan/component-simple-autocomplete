@@ -45,7 +45,6 @@ describe('pluginUtils', () => {
   describe('getFormAction()', () => {
     const self = {
       gigSearchUrl: "http://fiverr.com/search/gigs",
-      searchActionParams: "?acmpl=1&utf8=%E2%9C%93&search_in=category&source=top-bar&locale=en&layout=auto",
       userSearchUrl: "http://fiverr.com/search/users",
       urlPrefix: "http://fiverr.com"
     };
@@ -71,7 +70,7 @@ describe('pluginUtils', () => {
     ];
 
     it('should return a gig search action url', () => {
-      pluginUtils.getFormAction(self, gigSuggestion).should.equal("http://fiverr.com/search/gigs?acmpl=1&utf8=%E2%9C%93&search_in=category&source=top-bar&locale=en&layout=auto");
+      pluginUtils.getFormAction(self, gigSuggestion).should.equal("http://fiverr.com/search/gigs");
     });
 
     it('should return a user search action url', () => {
@@ -126,7 +125,7 @@ describe('pluginUtils', () => {
             suggestion = suggestions[j];
             suggestionType = suggestion.data;
 
-            if (types.indexOf(suggestionType) === -1) {
+            if (types.indexOf(suggestionType) === -1 && suggestionType !== 'user_search') {
               types.push(suggestionType);
             };
           }
@@ -171,5 +170,6 @@ describe('pluginUtils', () => {
     });
 
   });
+
 
 });

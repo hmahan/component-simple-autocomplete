@@ -33,7 +33,7 @@ describe('Autocomplete()', () => {
     });
 
     describe('init()', () => {
-      
+
       autocomplete = new Autocomplete(defaultOptions);
 
       // enable testing by disabling normal functions
@@ -93,6 +93,12 @@ describe('Autocomplete()', () => {
       autocomplete.handleInputFocus = () => { return true; };
       autocomplete.handleInputBlur = () => { return true; };
       autocomplete.setContainer = () => { return true; };
+
+      autocomplete.setSubmitButton = () => {
+        return {
+          on: function() {}
+        };
+      };
 
       // set up fake on function
       autocomplete.attachAutocompletePlugin = () => {
