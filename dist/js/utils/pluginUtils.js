@@ -58,7 +58,7 @@ function handleAjaxResults(response, term) {
         'data': 'user_search',
         'isUserQuery': true,
         'queryTerm': term,
-        'value': getAlternativeSearchPrefix() + ' <strong>' + term + '</strong>'
+        'value': getAlternativeSearchPrefix() + ' ' + term
       });
     }
 

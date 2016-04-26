@@ -9957,6 +9957,7 @@
 
 	    _this.$container = _this.setContainer(_this.$form);
 	    _this.$input = _this.attachAutocompletePlugin(options.input);
+	    _this.$submit = _this.$container.find('.js-submit');
 	    _this.$dropdown = _this.setDropdownContainer(options.form);
 
 	    _this.bindEventListeners();
@@ -9979,6 +9980,11 @@
 
 	  this.bindEventListeners = function () {
 	    _this.$input.on('focus', _this.handleInputFocus).on('blur', _this.handleInputBlur);
+
+	    _this.$submit.on('click', function (e) {
+	      e.preventDefault();
+	      _this.$form.submit();
+	    });
 	  };
 
 	  this.handleInputFocus = function (e) {
@@ -10088,7 +10094,7 @@
 	        'data': 'user_search',
 	        'isUserQuery': true,
 	        'queryTerm': term,
-	        'value': getAlternativeSearchPrefix() + ' <strong>' + term + '</strong>'
+	        'value': getAlternativeSearchPrefix() + ' ' + term
 	      });
 	    }
 
@@ -10183,7 +10189,13 @@
 	  options.beforeRender = function (container) {
 	    return utils.pluginUtils.handleBeforeRender.call(self, container);
 	  };
-
+	  options.onSearchStart = function () {
+	    self.$input.autocomplete().clearCache();
+	    self.$submit.addClass('fa-circle-o-notch fa-spin').removeClass('fa-search');
+	  };
+	  options.onSearchComplete = function () {
+	    self.$submit.addClass('fa-search').removeClass('fa-circle-o-notch fa-spin');
+	  };
 	  options.onSelect = self.handleItemSelect;
 	  options.triggerSelectOnValidInput = false;
 

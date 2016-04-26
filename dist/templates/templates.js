@@ -44,7 +44,7 @@ this["autocomplete"] = {"1":function(depth0,helpers,partials,data) {
     + alias3(((helper = (helper = helpers.searchContainingTranslationPrefix || (depth0 != null ? depth0.searchContainingTranslationPrefix : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"searchContainingTranslationPrefix","hash":{},"data":data}) : helper)))
     + "\"\n        data-component-user-subhead=\""
     + alias3(((helper = (helper = helpers.userSubhead || (depth0 != null ? depth0.userSubhead : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"userSubhead","hash":{},"data":data}) : helper)))
-    + "\"\n    >\n\n";
+    + "\"\n    >\n    <a href=\"#!\" class=\"submit js-submit fa fa-search\" />\n\n";
   stack1 = ((helper = (helper = helpers.hiddenFields || (depth0 != null ? depth0.hiddenFields : depth0)) != null ? helper : alias1),(options={"name":"hiddenFields","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
   if (!helpers.hiddenFields) { stack1 = alias5.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }

@@ -23,6 +23,7 @@ function Autocomplete(options) {
 
     _this.$container = _this.setContainer(_this.$form);
     _this.$input = _this.attachAutocompletePlugin(options.input);
+    _this.$submit = _this.$container.find('.js-submit');
     _this.$dropdown = _this.setDropdownContainer(options.form);
 
     _this.bindEventListeners();
@@ -45,6 +46,11 @@ function Autocomplete(options) {
 
   this.bindEventListeners = function () {
     _this.$input.on('focus', _this.handleInputFocus).on('blur', _this.handleInputBlur);
+
+    _this.$submit.on('click', function (e) {
+      e.preventDefault();
+      _this.$form.submit();
+    });
   };
 
   this.handleInputFocus = function (e) {
