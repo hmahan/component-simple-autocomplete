@@ -66,7 +66,12 @@ function Autocomplete(options) {
   };
 
   this.handleItemSelect = function (suggestion) {
+
     var action = utils.pluginUtils.getFormAction(_this, suggestion);
+
+    if (suggestion.isUserQuery) {
+      _this.$input.val(suggestion.queryTerm);
+    }
 
     _this.$form.attr('action', action).submit();
   };

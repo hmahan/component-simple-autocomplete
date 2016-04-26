@@ -15,7 +15,9 @@ function getAutocompleteOptions(self) {
   options.deferRequestBy = 100;
   options.maxHeight = 600;
   options.dataType = 'jsonp';
-  options.transformResult = utils.pluginUtils.handleAjaxResults;
+  options.transformResult = function (response, term) {
+    return utils.pluginUtils.handleAjaxResults.call(self, response, term);
+  };
   options.beforeRender = function (container) {
     return utils.pluginUtils.handleBeforeRender.call(self, container);
   };

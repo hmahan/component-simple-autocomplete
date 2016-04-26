@@ -34,7 +34,7 @@ function getFormAction(self, suggestion) {
       formAction = void 0;
 
   userSearchAction = !isUserQuery ? urlPrefix + '/' + suggestion.value : userSearchUrl;
-  formAction = suggestionType === 'user_suggest' ? userSearchAction : gigSearchUrl;
+  formAction = suggestionType === 'user_suggest' || suggestionType === 'user_search' ? userSearchAction : gigSearchUrl;
 
   return formAction;
 };
@@ -53,6 +53,15 @@ function handleAjaxResults(response, term) {
       return obj.queryTerm = term;
     });
 
+    if (key === 'users_suggestions') {
+      searchResults.push({
+        'data': 'user_search',
+        'isUserQuery': true,
+        'queryTerm': term,
+        'value': getAlternativeSearchPrefix() + ' <strong>' + term + '</strong>'
+      });
+    }
+
     searchResults = searchResults.concat(response[key]);
   }
 
@@ -66,7 +75,7 @@ function handleBeforeRender($container) {
   }
 
   addSuggestionClasses($container);
-  addAlternativeSearch($container, this);
+  addAlternativeSearchHeader($container, this);
 
   return $container;
 };
@@ -78,6 +87,7 @@ function addSuggestionClasses($container) {
   var suggestionType = void 0,
       suggestionData = void 0,
       suggestionDataIndex = void 0,
+      suggestionClass = void 0,
       $suggestion = void 0;
 
   $suggestions.each(function () {
@@ -85,42 +95,26 @@ function addSuggestionClasses($container) {
     suggestionDataIndex = $suggestion.data('index');
     suggestionData = searchResults[suggestionDataIndex] || {};
     suggestionType = suggestionData.data || 'suggest';
+    suggestionClass = suggestionType === 'user_suggest' ? 'fa-user' : '';
+    suggestionClass = suggestionType === 'user_search' ? 'fa-search' : suggestionClass;
 
-    if (suggestionType === 'user_suggest') {
-      $suggestion.prepend($('<i />', { 'class': 'fa fa-user' }));
+    if (suggestionClass) {
+      $suggestion.prepend($('<i />', { 'class': 'fa ' + suggestionClass }));
     }
 
     $suggestion.addClass(suggestionType);
   });
 };
 
-function addAlternativeSearch($container, self) {
+function addAlternativeSearchHeader($container, self) {
   var query = searchResults[0].queryTerm,
       prefix = getAlternativeSearchPrefix(),
       $userSubhead = $('<div />', {
     'class': 'autocomplete-title',
     'text': self.userSubhead
-  }),
-      $userSection = $('<div />', {
-    'class': 'autocomplete-suggestion autocomplete-alternative-search'
-  }),
-      $icon = $('<i />', {
-    'class': 'fa fa-search'
-  }),
-      isOmnibox = getSearchType() === 'omnibox',
-      omniboxString = prefix + ' <strong>' + query + '</strong>',
-      normalSearchString = prefix + ' \'' + query + '\'',
-      userSectionString = isOmnibox ? omniboxString : normalSearchString;
-
-  console.info('userSubhead', $userSubhead, self.userSubhead);
-
-  $userSection.html(userSectionString).prepend($icon).on('click', function (e) {
-    e.preventDefault();
-
-    self.$form.attr('action', self.userSearchUrl).submit();
   });
 
-  $container.find('.user_suggest').eq(0).before($userSubhead).before($userSection);
+  $container.find('.user_search').before($userSubhead);
 };
 
 module.exports = {
