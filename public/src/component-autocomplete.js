@@ -1,7 +1,7 @@
 'use strict'
 
 import $ from 'jquery';
-const Autocomplete = require('../../dist/js/autocomplete');
+const Autocomplete = require('../../dist/js/component-autocomplete');
 
 $(function() {
 

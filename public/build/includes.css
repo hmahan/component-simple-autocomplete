@@ -88,15 +88,15 @@ MIXINS
 /* 12 col grid */
 /* our standard gig listing item */
 /*!
- *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.6.2 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.eot?v=4.5.0&1451939250);
-  src: url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.eot?v=4.5.0&1451939250#iefix) format("embedded-opentype"), url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.woff2?v=4.5.0) format("woff2"), url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.woff?v=4.5.0&1451939250) format("woff"), url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.ttf?v=4.5.0&1451939250) format("truetype"), url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.svg?v=4.5.0&1451939250#fontawesomeregular) format("svg");
+  src: url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.eot?v=4.6.2&1451939250);
+  src: url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.eot?v=4.6.2&1451939250#iefix) format("embedded-opentype"), url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.woff2?v=4.6.2) format("woff2"), url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.woff?v=4.6.2&1451939250) format("woff"), url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.ttf?v=4.6.2&1451939250) format("truetype"), url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.svg?v=4.6.2&1451939250#fontawesomeregular) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -225,35 +225,35 @@ MIXINS
   }
 }
 .fa-rotate-90 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
 .fa-rotate-180 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 .fa-rotate-270 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
   -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 
 .fa-flip-horizontal {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
   -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 
 .fa-flip-vertical {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
   -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1);
@@ -1883,7 +1883,7 @@ MIXINS
   content: "";
 }
 
-.fa-pied-piper:before {
+.fa-pied-piper-pp:before {
   content: "";
 }
 
@@ -2047,6 +2047,7 @@ MIXINS
 }
 
 .fa-ra:before,
+.fa-resistance:before,
 .fa-rebel:before {
   content: "";
 }
@@ -2806,6 +2807,138 @@ MIXINS
   content: "";
 }
 
+.fa-gitlab:before {
+  content: "";
+}
+
+.fa-wpbeginner:before {
+  content: "";
+}
+
+.fa-wpforms:before {
+  content: "";
+}
+
+.fa-envira:before {
+  content: "";
+}
+
+.fa-universal-access:before {
+  content: "";
+}
+
+.fa-wheelchair-alt:before {
+  content: "";
+}
+
+.fa-question-circle-o:before {
+  content: "";
+}
+
+.fa-blind:before {
+  content: "";
+}
+
+.fa-audio-description:before {
+  content: "";
+}
+
+.fa-volume-control-phone:before {
+  content: "";
+}
+
+.fa-braille:before {
+  content: "";
+}
+
+.fa-assistive-listening-systems:before {
+  content: "";
+}
+
+.fa-asl-interpreting:before,
+.fa-american-sign-language-interpreting:before {
+  content: "";
+}
+
+.fa-deafness:before,
+.fa-hard-of-hearing:before,
+.fa-deaf:before {
+  content: "";
+}
+
+.fa-glide:before {
+  content: "";
+}
+
+.fa-glide-g:before {
+  content: "";
+}
+
+.fa-signing:before,
+.fa-sign-language:before {
+  content: "";
+}
+
+.fa-low-vision:before {
+  content: "";
+}
+
+.fa-viadeo:before {
+  content: "";
+}
+
+.fa-viadeo-square:before {
+  content: "";
+}
+
+.fa-snapchat:before {
+  content: "";
+}
+
+.fa-snapchat-ghost:before {
+  content: "";
+}
+
+.fa-snapchat-square:before {
+  content: "";
+}
+
+.fa-pied-piper:before {
+  content: "";
+}
+
+.fa-first-order:before {
+  content: "";
+}
+
+.fa-yoast:before {
+  content: "";
+}
+
+.fa-themeisle:before {
+  content: "";
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+
 /*
 ----------------------------------------------------
 THIS FILE IS FOR GLOBAL CLASSES/STYLES SHARED
@@ -2816,8 +2949,8 @@ BETWEEN DESKTOP AND MOBILE
   font-family: 'Pluto';
   font-weight: normal;
   font-style: normal;
-  src: url(asset_path("fonts/pluto/pluto_fiverr-webfont.eot", stylesheet));
-  src: url(asset_path("fonts/pluto/pluto_fiverr-webfont.eot?#iefix", stylesheet)) format("embedded-opentype"), url(asset_path("fonts/pluto/pluto_fiverr-webfont.woff", stylesheet)) format("woff"), url(asset_path("fonts/pluto/pluto_fiverr-webfont.ttf", stylesheet)) format("truetype"), url(asset_path("fonts/pluto/pluto_fiverr-webfont.svg#pluto_fiverrregular", stylesheet)) format("svg");
+  src: url("/node_modules/@fiverr/v2-stylesheets/fonts/pluto/pluto_fiverr-webfont.eot");
+  src: url("/node_modules/@fiverr/v2-stylesheets/fonts/pluto/pluto_fiverr-webfont.eot?#iefix") format("embedded-opentype"), url("/node_modules/@fiverr/v2-stylesheets/fonts/pluto/pluto_fiverr-webfont.woff") format("woff"), url("/node_modules/@fiverr/v2-stylesheets/fonts/pluto/pluto_fiverr-webfont.ttf") format("truetype"), url("/node_modules/@fiverr/v2-stylesheets/fonts/pluto/pluto_fiverr-webfont.svg#pluto_fiverrregular") format("svg");
 }
 html {
   -webkit-font-smoothing: antialiased;
@@ -2963,15 +3096,15 @@ SPACING & TYPOGRAPHY
 ----------------------------------------------------
 */
 /*!
- *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.6.2 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.eot?v=4.5.0&1451939250);
-  src: url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.eot?v=4.5.0&1451939250#iefix) format("embedded-opentype"), url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.woff2?v=4.5.0) format("woff2"), url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.woff?v=4.5.0&1451939250) format("woff"), url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.ttf?v=4.5.0&1451939250) format("truetype"), url(../../node_modules/@fiverr/v2-stylesheets/fonts/font-awesome/fontawesome-webfont.svg?v=4.5.0&1451939250#fontawesomeregular) format("svg");
+  src: url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.eot?v=4.6.2&1451939250);
+  src: url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.eot?v=4.6.2&1451939250#iefix) format("embedded-opentype"), url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.woff2?v=4.6.2) format("woff2"), url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.woff?v=4.6.2&1451939250) format("woff"), url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.ttf?v=4.6.2&1451939250) format("truetype"), url(../../node_modules/@fiverr/component-v2-stylesheets/fonts/font-awesome/fontawesome-webfont.svg?v=4.6.2&1451939250#fontawesomeregular) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3100,35 +3233,35 @@ SPACING & TYPOGRAPHY
   }
 }
 .fa-rotate-90 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
 .fa-rotate-180 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 .fa-rotate-270 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
   -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 
 .fa-flip-horizontal {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
   -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 
 .fa-flip-vertical {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
   -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1);
@@ -4758,7 +4891,7 @@ SPACING & TYPOGRAPHY
   content: "";
 }
 
-.fa-pied-piper:before {
+.fa-pied-piper-pp:before {
   content: "";
 }
 
@@ -4922,6 +5055,7 @@ SPACING & TYPOGRAPHY
 }
 
 .fa-ra:before,
+.fa-resistance:before,
 .fa-rebel:before {
   content: "";
 }
@@ -5679,6 +5813,138 @@ SPACING & TYPOGRAPHY
 
 .fa-percent:before {
   content: "";
+}
+
+.fa-gitlab:before {
+  content: "";
+}
+
+.fa-wpbeginner:before {
+  content: "";
+}
+
+.fa-wpforms:before {
+  content: "";
+}
+
+.fa-envira:before {
+  content: "";
+}
+
+.fa-universal-access:before {
+  content: "";
+}
+
+.fa-wheelchair-alt:before {
+  content: "";
+}
+
+.fa-question-circle-o:before {
+  content: "";
+}
+
+.fa-blind:before {
+  content: "";
+}
+
+.fa-audio-description:before {
+  content: "";
+}
+
+.fa-volume-control-phone:before {
+  content: "";
+}
+
+.fa-braille:before {
+  content: "";
+}
+
+.fa-assistive-listening-systems:before {
+  content: "";
+}
+
+.fa-asl-interpreting:before,
+.fa-american-sign-language-interpreting:before {
+  content: "";
+}
+
+.fa-deafness:before,
+.fa-hard-of-hearing:before,
+.fa-deaf:before {
+  content: "";
+}
+
+.fa-glide:before {
+  content: "";
+}
+
+.fa-glide-g:before {
+  content: "";
+}
+
+.fa-signing:before,
+.fa-sign-language:before {
+  content: "";
+}
+
+.fa-low-vision:before {
+  content: "";
+}
+
+.fa-viadeo:before {
+  content: "";
+}
+
+.fa-viadeo-square:before {
+  content: "";
+}
+
+.fa-snapchat:before {
+  content: "";
+}
+
+.fa-snapchat-ghost:before {
+  content: "";
+}
+
+.fa-snapchat-square:before {
+  content: "";
+}
+
+.fa-pied-piper:before {
+  content: "";
+}
+
+.fa-first-order:before {
+  content: "";
+}
+
+.fa-yoast:before {
+  content: "";
+}
+
+.fa-themeisle:before {
+  content: "";
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
 }
 
 .b-0 {

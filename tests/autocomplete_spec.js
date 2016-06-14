@@ -4,7 +4,7 @@ const chai = require('chai');
 const should = chai.should();
 const expect = chai.expect;
 
-const Autocomplete = require('../dist/js/autocomplete');
+const Autocomplete = require('../dist/js/component-autocomplete');
 const defaultOptions = { form: "<div></div>", type: "omnibox", locale: "en", includeShadyGigs: true };
 
 describe('Autocomplete()', () => {
@@ -131,6 +131,15 @@ describe('Autocomplete()', () => {
         events.blur.should.be.a('function');
       });
 
+    });
+
+  });
+
+  describe('handleItemSelect', () => {
+    var autocomplete = new Autocomplete();
+
+    it('should be a function', () => {
+      autocomplete.handleItemSelect.should.be.a('function');
     });
 
   });

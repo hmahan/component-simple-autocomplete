@@ -20,7 +20,7 @@ gulp
         return gulp.src(scssGlob)
             .pipe(compass({
                 'config_file' : './gulp/compass_config.rb',
-                'import_path' : `./node_modules/@fiverr/v2-stylesheets`,
+                'import_path' : `./node_modules/@fiverr/component-v2-stylesheets`,
                 'css' : cssDistDir,
                 'sass' : scssLibDir
             }))
@@ -34,7 +34,7 @@ gulp
         return gulp.src('./public')
                 .pipe(compass({
                     'config_file' : './gulp/compass_config.rb',
-                    'import_path' : './node_modules/@fiverr/v2-stylesheets',
+                    'import_path' : './node_modules/@fiverr/component-v2-stylesheets',
                     'css' : './public/build',
                     'sass' : './public/src'
                 }));

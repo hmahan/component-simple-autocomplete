@@ -1,4 +1,4 @@
-this["autocomplete"] = {"1":function(depth0,helpers,partials,data) {
+this["component-autocomplete"] = {"1":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
   return "        <input type=\"hidden\" id=\""
