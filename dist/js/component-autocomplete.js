@@ -17,6 +17,7 @@ function Autocomplete(options) {
     _this.gigSearchUrl = '' + _this.urlPrefix + options.gigSearchUrl;
     _this.userSearchUrl = '' + _this.urlPrefix + options.userSearchUrl;
     _this.searchActionParams = options.searchActionParams;
+    _this.predeterminedResultSet = options.predeterminedResultSet;
 
     utils.pluginUtils.setSearchType(_this.type);
     utils.pluginUtils.setAlternativeSearchPrefix(options.alternativeSearchPrefix);

@@ -20,7 +20,8 @@ $(function() {
           "gigSearchUrl" : formData['componentGigSearchUrl'],
           "userSearchUrl" : formData['componentUserSearchUrl'],
           "searchActionParams" : formData['componentSearchActionParams'],
-          "alternativeSearchPrefix" : formData['componentAlternativeSearchPrefix']
+          "alternativeSearchPrefix" : formData['componentAlternativeSearchPrefix'],
+          "predeterminedResultSet" : formData['componentPredeterminedResultSet']
         };
 
   let autocomplete;

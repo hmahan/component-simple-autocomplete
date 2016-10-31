@@ -36,5 +36,10 @@
             "value" : "en"
         }
     ],
-    "searchContainingTranslationPrefix" : "Search usernames containing"
+    "searchContainingTranslationPrefix" : "Search usernames containing",
+    "predeterminedResultSet" : [
+        "United States",
+        "Israel",
+        "Brazil"
+    ]
 }

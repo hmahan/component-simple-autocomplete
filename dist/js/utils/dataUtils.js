@@ -7,6 +7,9 @@ var utils = {
 function getAutocompleteOptions(self) {
   var options = {};
 
+  // change the jquery autocomplete options here based on the model
+  console.info('predeterminedResultSet', self.predeterminedResultSet);
+
   options.minChars = 2;
   options.appendTo = self.$container;
   options.serviceUrl = function (self) {

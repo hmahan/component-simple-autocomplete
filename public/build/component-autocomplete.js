@@ -71,7 +71,8 @@
 	    "gigSearchUrl": formData['componentGigSearchUrl'],
 	    "userSearchUrl": formData['componentUserSearchUrl'],
 	    "searchActionParams": formData['componentSearchActionParams'],
-	    "alternativeSearchPrefix": formData['componentAlternativeSearchPrefix']
+	    "alternativeSearchPrefix": formData['componentAlternativeSearchPrefix'],
+	    "predeterminedResultSet": formData['componentPredeterminedResultSet']
 	  };
 
 	  var autocomplete = void 0;
@@ -9951,6 +9952,7 @@
 	    _this.gigSearchUrl = '' + _this.urlPrefix + options.gigSearchUrl;
 	    _this.userSearchUrl = '' + _this.urlPrefix + options.userSearchUrl;
 	    _this.searchActionParams = options.searchActionParams;
+	    _this.predeterminedResultSet = options.predeterminedResultSet;
 
 	    utils.pluginUtils.setSearchType(_this.type);
 	    utils.pluginUtils.setAlternativeSearchPrefix(options.alternativeSearchPrefix);
@@ -10190,6 +10192,9 @@
 
 	function getAutocompleteOptions(self) {
 	  var options = {};
+
+	  // change the jquery autocomplete options here based on the model
+	  console.info('predeterminedResultSet', self.predeterminedResultSet);
 
 	  options.minChars = 2;
 	  options.appendTo = self.$container;
