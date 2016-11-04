@@ -8,9 +8,8 @@ $(function() {
     const $el = $('[data-component="simple-autocomplete"]');
     const model = require('../../models/component-simple-autocomplete');
 
-    model.appendTo = (model.appendTo) ? model.appendTo : $('.country-list-autocomplete');
-
-    // console.log(model.appendTo);
+    // if an appendTo is in the model, paste the suggestions there. Otherwise put it on the parent of the input.
+    model.appendTo = (model.appendTo) ? model.appendTo : $('.' + model.inputName + '-autocomplete');
 
     let autocomplete = new Autocomplete($el, model);
 });

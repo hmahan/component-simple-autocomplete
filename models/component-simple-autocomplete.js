@@ -23,23 +23,28 @@ module.exports = {
     "lookup" : [
         {
           value: "United States",
-          data: "US"
+          key: "US"
         },
         {
           value: "Israel",
-          data: "IL"
+          key: "IL"
         },
         {
           value: "Brazil",
-          data: "BZ"
+          key: "BZ"
         }
     ],
     lookupFilter: function(suggestion, originalQuery, queryLowerCase) {
         var matcher = new RegExp('^' + queryLowerCase.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&'), 'i');
 
-        console.log(suggestion);
-
-        // get countries that match the name or the native_name and are not selected yet
         return matcher.test(suggestion.value);
+    },
+    formatResult: function(suggestion, currentValue) {
+        return suggestion.value;
+    },
+    onSelect: function(suggestion) {
+
+        console.log(suggestion.value);
+        console.log(suggestion.key);
     }
 };
