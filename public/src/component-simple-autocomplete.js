@@ -1,7 +1,7 @@
 'use strict'
 
 import $ from 'jquery';
-const Autocomplete = require('../../dist/js/component-simple-autocomplete');
+import Autocomplete from '../../dist/js/component-simple-autocomplete';
 
 $(function() {
 
@@ -10,10 +10,7 @@ $(function() {
 
     model.appendTo = (model.appendTo) ? model.appendTo : $('.country-list-autocomplete');
 
-    console.log(model.appendTo);
+    // console.log(model.appendTo);
 
-    let autocomplete;
-
-    autocomplete = new Autocomplete($el, model);
-    autocomplete.init();
+    let autocomplete = new Autocomplete($el, model);
 });

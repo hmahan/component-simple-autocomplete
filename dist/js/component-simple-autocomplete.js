@@ -1,23 +1,41 @@
 'use strict';
 
-var $ = require('jquery');
-var utils = require('./utils/viewUtils');
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-function Autocomplete($el, model) {
-    var _this = this;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-    this.init = function () {
-        _this.$el = _this.attachAutocompletePlugin($el, model);
-    };
+var _jquery = require('jquery');
 
-    this.attachAutocompletePlugin = function ($el, model) {
-        var jqAutocomplete = require('devbridge-autocomplete'),
-            options = utils.getAutocompleteOptions(model);
+var _jquery2 = _interopRequireDefault(_jquery);
 
-        console.log(model);
+var _viewUtils = require('./utils/viewUtils');
 
-        return $el.autocomplete(options);
-    };
-};
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = Autocomplete;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Autocomplete = function () {
+    function Autocomplete($el, model) {
+        _classCallCheck(this, Autocomplete);
+
+        this.$el = this.attachAutocompletePlugin($el, model);
+    }
+
+    _createClass(Autocomplete, [{
+        key: 'attachAutocompletePlugin',
+        value: function attachAutocompletePlugin($el, model) {
+            var jqAutocomplete = require('devbridge-autocomplete'),
+                options = (0, _viewUtils.getAutocompleteOptions)(model);
+
+            return $el.autocomplete(options);
+        }
+    }]);
+
+    return Autocomplete;
+}();
+
+;
+
+exports.default = Autocomplete;

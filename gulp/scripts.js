@@ -11,6 +11,7 @@ gulp
         return gulp.src([`lib/js/**/*.js`])
             .pipe(babel({
                 presets: ['es2015'],
+                plugins: ['transform-object-assign'],
                 sourceMaps: true
             }))
             .pipe(jsHint())
@@ -21,6 +22,7 @@ gulp
         return gulp.src(`public/src/${pkg.moduleName}.js`)
             .pipe(babel({
                 presets: ['es2015'],
+                plugins: ['transform-object-assign'],
                 sourceMaps: true
             }))
             .pipe(jsHint())
