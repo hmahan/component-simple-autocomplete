@@ -1,25 +1,13 @@
 @import "base";
 
-body {
-    background: $bg_header_offwhite;
-    min-width: 0;
+input[type="search"] {
+    font-size: 14px;
+    line-height: 120%;
+}
 
-    header,
-    footer {
-        background: #fff;
-        padding: 50px 20px;
-        margin: 20px;
-        border-bottom: 2px solid $border_grey_light;
-    }
-
-    input[type="search"] {
-        font-size: 14px;
-        line-height: 120%;
-    }
-
-    .autocomplete-suggestion {
-        font-size: 14px;
-        padding: 6px 10px;
-        cursor: pointer;
-    }
+.autocomplete-suggestion {
+    font-size: 14px;
+    line-height: 120%;
+    padding: 6px 10px;
+    cursor: pointer;
 }
