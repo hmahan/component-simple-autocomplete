@@ -6,3 +6,8 @@
 #directories
 node_modules
 public/build
+
+node_modules
+*.log
+.DS_Store
+.sass-cache
