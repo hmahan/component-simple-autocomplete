@@ -1,0 +1,8 @@
+# files
+*.log
+.DS_Store
+.sass-cache
+
+#directories
+node_modules
+public/build

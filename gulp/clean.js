@@ -1,0 +1,23 @@
+const pkg = require('../package.json');
+const gulp = require('gulp');
+const del = require('del');
+
+gulp
+    .task('clean', () => {
+        return del([
+            'dist/js',
+            'dist/styles',
+            'dist/templates',
+            'public/build'
+        ]);
+    })
+    .task('clean:runner', () => {
+        return del([
+            `public/src/${pkg.moduleName}.tmp.js`
+        ]);
+    })
+    .task('clean:css', () => {
+        return del([
+            '.sass-cache'
+        ]);
+    });

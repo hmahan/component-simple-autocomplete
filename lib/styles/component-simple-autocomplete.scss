@@ -1,0 +1,18 @@
+@import "base";
+
+body {
+    background: $bg_header_offwhite;
+    min-width: 0;
+
+    header,
+    footer {
+        background: #fff;
+        padding: 50px 20px;
+        margin: 20px;
+        border-bottom: 2px solid $border_grey_light;
+    }
+
+    input {
+    	position: relative;
+    }
+}
