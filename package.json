@@ -1,6 +1,6 @@
 {
-  "name": "@fiverr/component-simple-autocomplete",
-  "moduleName": "component-simple-autocomplete",
+  "name": "@fiverr/component-autocomplete",
+  "moduleName": "component-autocomplete",
   "version": "0.0.1",
   "description": "Simple autocomplete for when you don&#39;t need the bells and whistles",
   "author": "Hailey",

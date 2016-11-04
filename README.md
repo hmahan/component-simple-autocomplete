@@ -1,7 +1,7 @@
-# component-simple-autocomplete
+# component-autocomplete
 ### by Hailey
 
-> Simple autocomplete for when you don&#39;t need the bells and whistles
+> Simple autocomplete
 
 ### Application frameworks
 

@@ -2,14 +2,14 @@ const chai = require('chai');
 const expect = chai.expect;
 const should = chai.should();
 
-const SampleFunction = require('../dist/js/component-simple-autocomplete');
+const SampleFunction = require('../dist/js/component-autocomplete');
 
 describe('SampleFunction', () => {
 
     it('should be a function', () => {
         SampleFunction.should.be.a('function');
     });
-    
+
     it('should return an object', () => {
         new SampleFunction().should.be.an('object');
     });

@@ -1,4 +1,4 @@
-this["component-simple-autocomplete"] = {"1":function(depth0,helpers,partials,data) {
+this["component-autocomplete"] = {"1":function(depth0,helpers,partials,data) {
     var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 
   return "        <input type=\"hidden\" id=\""
@@ -16,7 +16,7 @@ this["component-simple-autocomplete"] = {"1":function(depth0,helpers,partials,da
     + alias3(((helper = (helper = helpers.inputName || (depth0 != null ? depth0.inputName : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"inputName","hash":{},"data":data}) : helper)))
     + " js-"
     + alias3(((helper = (helper = helpers.inputName || (depth0 != null ? depth0.inputName : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"inputName","hash":{},"data":data}) : helper)))
-    + "\"\n        data-component=\"simple-autocomplete\"\n        placeholder=\""
+    + "\"\n        data-component=\"autocomplete\"\n        placeholder=\""
     + alias3(((helper = (helper = helpers.inputPlaceholder || (depth0 != null ? depth0.inputPlaceholder : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"inputPlaceholder","hash":{},"data":data}) : helper)))
     + "\"\n        type=\"search\"\n        autocomplete=\"off\"\n        value=\""
     + alias3(((helper = (helper = helpers.initialValue || (depth0 != null ? depth0.initialValue : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"initialValue","hash":{},"data":data}) : helper)))
