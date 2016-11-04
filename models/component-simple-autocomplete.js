@@ -21,12 +21,21 @@ module.exports = {
         }
     ],
     "lookup" : [
-        { US: "United States" },
-        { IL: "Israel" },
-        { BZ: "Brazil" }
+        {
+          value: "United States",
+          data: "US"
+        },
+        {
+          value: "Israel",
+          data: "IL"
+        },
+        {
+          value: "Brazil",
+          data: "BZ"
+        }
     ],
     lookupFilter: function(suggestion, originalQuery, queryLowerCase) {
-        var matcher = new RegExp('^' +  queryLowerCase.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&'), 'i');
+        var matcher = new RegExp('^' + queryLowerCase.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&'), 'i');
 
         console.log(suggestion);
 
