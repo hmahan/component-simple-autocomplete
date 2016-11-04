@@ -8,7 +8,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function getAutocompleteOptions(m) {
 
-    return _extends(m, { minChars: 2 });
+    return _extends(m, { minChars: 1 });
 };
 
 exports.getAutocompleteOptions = getAutocompleteOptions;
